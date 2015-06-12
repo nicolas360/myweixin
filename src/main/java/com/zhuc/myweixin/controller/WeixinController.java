@@ -8,6 +8,7 @@ import com.github.sd4324530.fastweixin.message.req.ImageReqMsg;
 import com.github.sd4324530.fastweixin.message.req.MenuEvent;
 import com.github.sd4324530.fastweixin.message.req.TextReqMsg;
 import com.github.sd4324530.fastweixin.servlet.WeixinControllerSupport;
+import com.zhuc.myweixin.utils.DefinedPropertyConfigurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,8 @@ public class WeixinController extends WeixinControllerSupport {
 
     private static final Logger logger = LoggerFactory.getLogger(WeixinController.class);
     private static final String TOKEN = "anji";
-    private static final String BIND_URL = "http://221.130.184.31:10080/myweixin/web/bindPage?openId=";
-    private static final String LUDAN_URL = "http://221.130.184.31:10080/myweixin/web/ludanPage?openId=";
+    private static final String BIND_URL = DefinedPropertyConfigurer.getContextProperty("BIND_URL");
+    private static final String LUDAN_URL = DefinedPropertyConfigurer.getContextProperty("LUDAN_URL");
 
     //设置TOKEN，用于绑定微信服务器
     @Override
@@ -51,7 +52,7 @@ public class WeixinController extends WeixinControllerSupport {
         logger.debug("{}已关注", new Object[]{event.getFromUserName()});
         TextMsg msg = new TextMsg();
         msg.add("请先绑定账号吧！");
-        msg.addLink("立即绑定", BIND_URL + event.getFromUserName());
+        msg.addLink("立即绑定", BIND_URL +"?openId="+ event.getFromUserName());
         return msg;
     }
 
@@ -69,12 +70,12 @@ public class WeixinController extends WeixinControllerSupport {
         BaseMsg msg = null;
         if ("ludan".equals(key)) {
             TextMsg temp = new TextMsg();
-            temp.addLink("路单查询", LUDAN_URL + event.getFromUserName());
+            temp.addLink("路单查询", LUDAN_URL +"?openId="+  event.getFromUserName());
             msg = temp;
 
         } else if ("bind".equals(key)){
             TextMsg temp = new TextMsg();
-            temp.addLink("立即绑定", BIND_URL + event.getFromUserName());
+            temp.addLink("立即绑定", BIND_URL +"?openId="+  event.getFromUserName());
             msg = temp;
         }
 
