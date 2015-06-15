@@ -38,7 +38,7 @@ public class WeixinController extends WeixinControllerSupport {
     protected BaseMsg handleTextMsg(TextReqMsg msg) {
         String content = msg.getContent();
         logger.debug("用户发送文本内容:{} by {}", new Object[]{content, msg.getFromUserName()});
-        return null;
+        return super.handleTextMsg(msg);
     }
 
     @Override

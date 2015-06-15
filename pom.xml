@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.6</jdk.version>
 
-        <spring.version>4.1.0.RELEASE</spring.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
         <spring-data-jpa.version>1.7.0.RELEASE</spring-data-jpa.version>
         <spring-data-mongodb.version>1.6.0.RELEASE</spring-data-mongodb.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
