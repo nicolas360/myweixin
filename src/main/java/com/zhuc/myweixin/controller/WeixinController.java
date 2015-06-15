@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeixinController extends WeixinControllerSupport {
 
     private static final Logger logger = LoggerFactory.getLogger(WeixinController.class);
-    private static final String TOKEN = "anji";
+    private static final String TOKEN = DefinedPropertyConfigurer.getContextProperty("TOKEN");
     private static final String BIND_URL = DefinedPropertyConfigurer.getContextProperty("BIND_URL");
     private static final String LUDAN_URL = DefinedPropertyConfigurer.getContextProperty("LUDAN_URL");
 
